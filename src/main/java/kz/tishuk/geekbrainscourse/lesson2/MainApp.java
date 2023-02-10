@@ -2,9 +2,11 @@ package kz.tishuk.geekbrainscourse.lesson2;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class MainApp {
+    void metod (){
+        System.out.println("asf");
+    }
     public static void main(String[] args) {
         Cat cat = new Cat("Барсик", 100, 3);
         Robot robot = new Robot("Робот", 50, 1);
