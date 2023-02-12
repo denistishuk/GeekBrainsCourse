@@ -21,7 +21,7 @@ public class SumArray {
         return sum;
     }
 
-    public static void main(String[] args) throws MyArraySizeException, MyArrayDataException {
+    public static void main(String[] args){
         String[][] nums = new String[][]
                 {
                         {"1", "2", "3", "4"},
@@ -31,7 +31,11 @@ public class SumArray {
                 };
         System.out.println("Размерность массива " + nums.length + ", " + nums[0].length);
 
-        System.out.println("Сумма элементов массива равна " + sumArray(nums));
+        try {
+            System.out.println("Сумма элементов массива равна " + sumArray(nums));
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
