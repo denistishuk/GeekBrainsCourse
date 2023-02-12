@@ -3,19 +3,23 @@ package kz.tishuk.geekbrainscourse.lesson3;
 public class SumArray {
 
     public static int sumArray (String[][] array) throws MyArraySizeException, MyArrayDataException {
-        int sum = 0;
-        if (array.length != 4 || array[0].length != 4){
-            throw new MyArraySizeException("Массив должен быть размером [4][4]");
+        if (array.length != 4){
+            throw new MyArraySizeException();
         }
+        int sum = 0;
         for(int i = 0; i < array.length; i++){
+            if(array[i].length != 4){
+                throw new MyArraySizeException();
+            }
             for (int j = 0; j < array[0].length; j++) {
-                int number = 0;
+                int number;
                 try {
                     number = Integer.parseInt(array[i][j]);
                 } catch (NumberFormatException e) {
-                    throw new MyArrayDataException("Не возможно преобразовать в число");
+                    System.out.println("В ячейке " + "[" + i + "]" + "[" + j+ "]" + " не верный формат");
+                    throw new MyArrayDataException();
                 }
-                sum = sum + number;
+                sum += number;
             }
         }
         return sum;
@@ -33,8 +37,8 @@ public class SumArray {
 
         try {
             System.out.println("Сумма элементов массива равна " + sumArray(nums));
-        } catch (MyArraySizeException | MyArrayDataException e) {
-            throw new RuntimeException(e);
+        } catch (MyException e) {
+            System.out.println(e);
         }
 
 
