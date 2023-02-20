@@ -10,20 +10,4 @@ public class Cat extends Animal{
         super("Кот", name, Cat.maxDistanceRun, Cat.maxDistanceSwim);
         count++;
     }
-
-/*    @Override
-    public void run(int distance) {
-        if(distance > 0 && distance < distanceRun) {
-            super.run(distance);
-        } else if(distance >= distanceRun) {
-            super.run(distanceRun);
-        } else {
-            System.out.println(this.getName() + " не побежал");
-        }
-    }
-
-    @Override
-    public void swim(int distance) {
-        System.out.println(this.getName() + " не умеет плавать");
-    }*/
 }
