@@ -3,7 +3,6 @@ package kz.tishuk.geekbrainscourse.lesson5;
 public class MainApp {
     public static void main(String[] args) {
         PhoneBook phoneBook = new PhoneBook();
-        //HashMap<String, String> map = new HashMap();
         phoneBook.add("Тишук", "5425267");
         phoneBook.add("Романенко", "12435347498");
         phoneBook.add("Руткевич", "6758522");
@@ -15,6 +14,7 @@ public class MainApp {
         phoneBook.add("Лакида", "084562342");
         phoneBook.add("Тишук", "23426");
 
-        phoneBook.get("Тишук");
+        System.out.println("Запрос телефона " + phoneBook.getPhone("Тишук"));
+        System.out.println("Вся книга " + phoneBook.getAll());
     }
 }

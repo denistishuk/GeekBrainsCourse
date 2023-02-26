@@ -1,37 +1,37 @@
 package kz.tishuk.geekbrainscourse.lesson5;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class PhoneBook {
-    private final Map<String, String> phoneBook;
-    public PhoneBook(Map<String, String> phoneBook) {
+    private Map<String, Set<String>> phoneBook;
+    public PhoneBook(Map<String, HashSet<String>> phoneBook) {
         this.phoneBook = new HashMap<>(phoneBook);
     }
     public PhoneBook(String surName, String phone) {
         phoneBook = new HashMap<>();
-        phoneBook.put(phone, surName);
+        phoneBook.put(surName, new HashSet<>());
+        phoneBook.get(surName).add(phone);
     }
     public PhoneBook() {
         phoneBook = new HashMap<>();
     }
     public void add(String surName, String phone){
-        phoneBook.put(phone, surName);
-    }
-    public void add(Map<String, String> phoneBook) {
-        this.phoneBook.putAll(phoneBook);
-    }
-    public void get(String surName){
-        if(phoneBook.containsValue(surName)) {
-            for (HashMap.Entry<String, String> pair : phoneBook.entrySet()) {
-                String phone = pair.getKey();
-                String name = pair.getValue();
-                if (name.equals(surName)) {
-                    System.out.println(surName + " - номер телефона " + phone);
-                }
-            }
-        } else {
-            System.out.println("Данной фамилии не существует");
+        if (!phoneBook.containsKey(surName)) {
+            phoneBook.put(surName, new HashSet<>());
         }
+        phoneBook.get(surName).add(phone);
+    }
+    public void add(Map<String, Set<String>> phoneBookAnother) {
+        this.phoneBook.putAll(phoneBookAnother);
+    }
+    public Set<String> getPhone(String surName){
+        return phoneBook.get(surName);
+    }
+
+    public Map<String, Set<String>> getAll() {
+        return phoneBook;
     }
 }
